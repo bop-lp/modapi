@@ -13,9 +13,10 @@ MOD_CONFIG_MOD_NAME_KEY = 'module_name'
 
 # Injection
 MOD_CONFIG_INJECT_KEY = 'inject'
+
+### Secret key
 MOD_CONFIG_INJECT_SECRET_KEY = 'secret_key'
 MOD_CONFIG_INJECT_SECRET_KEY_VALUE = 'secret_key_value'
-
 import secrets
 SECRET_KEY = secrets.SECRET_KEY
 SECRET_KEY_VALUE = secrets.SECRET_KEY_VALUE
