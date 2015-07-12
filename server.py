@@ -44,4 +44,4 @@ class ModApi:
 
 if __name__ == "__main__":
     api = ModApi()
-    api.app.run(debug=True)
+    api.app.run(host='0.0.0.0')
