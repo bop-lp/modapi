@@ -14,6 +14,9 @@ def get_modules():
     return dirs
 
 def inject(module, mod_conf):
+    inject_secret(module, mod_conf)
+
+def inject_secret(module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
         inject_config = mod_conf[config.MOD_CONFIG_INJECT_KEY]
         if config.MOD_CONFIG_INJECT_SECRET_KEY in inject_config and config.MOD_CONFIG_INJECT_SECRET_KEY_VALUE in inject_config:
