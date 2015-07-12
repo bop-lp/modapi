@@ -1,5 +1,9 @@
 MODULES_DIR = 'modules'
 
+# Server configuration
+SERVER_HOST = '0.0.0.0'
+SERVER_PORT = 8888
+
 # Module configuration
 MOD_CONFIG_ROUTES_MOD_KEY = 'routes_mod'
 MOD_CONFIG_ROUTES_MOD_DEFAULT = 'routes'
