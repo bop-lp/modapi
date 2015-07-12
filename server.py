@@ -6,7 +6,12 @@ from flask import Flask
 import config
 
 def get_modules():
-    return [x[0].replace('/', '.') for x in os.walk(config.MODULES_DIR)][1:]
+    dirs = []
+    for f in os.listdir(config.MODULES_DIR):
+        path = os.path.join(config.MODULES_DIR, f)
+        if os.path.isdir(path):
+            dirs.append(path.replace('/', '.'))
+    return dirs
 
 def inject(module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
