@@ -1,3 +1,5 @@
+modules/
+!modules/example_module/
 secrets.py
 
 # Byte-compiled / optimized / DLL files
