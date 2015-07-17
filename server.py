@@ -14,15 +14,15 @@ def get_modules():
     return dirs
 
 def inject(module, mod_conf):
-    for k, v in config.INJECTABLE.iteritems():
-        single_inject(k, v, module, mod_conf)
-
-def single_inject(key, value, module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
         inject_config = mod_conf[config.MOD_CONFIG_INJECT_KEY]
-        if key in inject_config:
-            x = inject_config[key]
-            setattr(module, x, value)
+        for k, v in config.INJECTABLE.iteritems():
+            single_inject(k, v, module, inject_config)
+
+def single_inject(key, value, module, inject_config):
+    if key in inject_config:
+        x = inject_config[key]
+        setattr(module, x, value)
 
 class ModApi:
     def __init__(self):
