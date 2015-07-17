@@ -25,6 +25,13 @@ def inject_secret(module, mod_conf):
             x = inject_config[config.MOD_CONFIG_INJECT_SECRET_KEY_VALUE]
             setattr(module, x, config.SECRET_KEY_VALUE)
 
+def single_inject(key, value, module, mod_conf):
+    if config.MOD_CONFIG_INJECT_KEY in mod_conf:
+        inject_config = mod_conf[config.MOD_CONFIG_INJECT_KEY]
+        if key in inject_config:
+            x = inject_config[key]
+            setattr(module, x, value)
+
 class ModApi:
     def __init__(self):
         self.app = Flask(__name__)
