@@ -14,16 +14,8 @@ def get_modules():
     return dirs
 
 def inject(module, mod_conf):
-    inject_secret(module, mod_conf)
-
-def inject_secret(module, mod_conf):
-    if config.MOD_CONFIG_INJECT_KEY in mod_conf:
-        inject_config = mod_conf[config.MOD_CONFIG_INJECT_KEY]
-        if config.MOD_CONFIG_INJECT_SECRET_KEY in inject_config and config.MOD_CONFIG_INJECT_SECRET_KEY_VALUE in inject_config:
-            x = inject_config[config.MOD_CONFIG_INJECT_SECRET_KEY]
-            setattr(module, x, config.SECRET_KEY)
-            x = inject_config[config.MOD_CONFIG_INJECT_SECRET_KEY_VALUE]
-            setattr(module, x, config.SECRET_KEY_VALUE)
+    for k, v in config.INJECTABLE.iteritems():
+        single_inject(k, v, module, mod_conf)
 
 def single_inject(key, value, module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
