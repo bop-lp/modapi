@@ -14,12 +14,10 @@ MOD_CONFIG_MOD_VAR_KEY = 'module_var'
 MOD_CONFIG_MOD_VAR_DEFAULT = 'module'
 
 MOD_CONFIG_URL_PREFIX_KEY = 'url_prefix'
-
 MOD_CONFIG_MOD_NAME_KEY = 'module_name'
 
 # Injection
 MOD_CONFIG_INJECT_KEY = 'inject'
-
 
 ### Maps module config keys to values to be injected
 INJECTABLE = {
