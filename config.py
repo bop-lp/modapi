@@ -22,7 +22,5 @@ MOD_CONFIG_INJECT_KEY = 'inject'
 
 ### Maps module config keys to values to be injected
 INJECTABLE = {
-    'secret_key': secrets.SECRET_KEY,
-    'secret_key_value': secrets.SECRET_KEY_VALUE,
     'notifier': notify.BoxcarNotifier()
 }
