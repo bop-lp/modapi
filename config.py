@@ -1,5 +1,4 @@
 from notify import notify
-import secrets
 
 MODULES_DIR = 'modules'
 
