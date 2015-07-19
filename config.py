@@ -1,4 +1,4 @@
-from notify import notify
+from notify import boxcar
 
 MODULES_DIR = 'modules'
 
@@ -21,5 +21,5 @@ MOD_CONFIG_INJECT_KEY = 'inject'
 
 ### Maps module config keys to values to be injected
 INJECTABLE = {
-    'notifier': notify.BoxcarNotifier()
+    'notifier': boxcar.BoxcarNotifier()
 }
