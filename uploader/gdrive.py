@@ -1,4 +1,7 @@
+import datetime
+import json
 from subprocess import call
+import tempfile
 
 import gdrive_config as config
 
@@ -14,6 +17,17 @@ class GDriveUploader:
         command += '--file %s' % filepath
 
         call(command, shell=True)
+
+    def quick_upload(self, obj, file_prefix=None, folder=None):
+        temp_file = tempfile.NamedTemporaryFile()
+        temp_file.write(json.dumps(obj))
+
+        filename = '%s.json' % datetime.date.today()
+        if file_prefix:
+            filename = '%s-%s' % (file_prefix, filename)
+
+        self.upload(temp_file.name, title=filename, parent=folder)
+        temp_file.close()
 
 if __name__ == '__main__':
     uploader = GDriveUploader()
