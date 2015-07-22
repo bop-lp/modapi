@@ -1,8 +1,10 @@
 from importlib import import_module
 import os
 
-from flask import Flask
+from flask import Flask, abort, jsonify
+from werkzeug.exceptions import HTTPException, HTTP_STATUS_CODES
 
+import notify
 import config
 
 def get_modules():
@@ -12,6 +14,17 @@ def get_modules():
         if os.path.isdir(path):
             dirs.append(path.replace('/', '.'))
     return dirs
+
+def handle_error(e):
+    code = 500
+    if isinstance(e, HTTPException):
+        code = e.code
+
+    notifier = notify.boxcar.BoxcarNotifier()
+    message = 'Error: %s' % e
+    notifier.send(message, title=message, source='modapi')
+
+    return jsonify(error=str(e)), code
 
 def inject(module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
@@ -28,6 +41,13 @@ class ModApi:
     def __init__(self):
         self.app = Flask(__name__)
         self.load_modules()
+
+        for code in HTTP_STATUS_CODES:
+            self.app.register_error_handler(code, handle_error)
+
+        @self.app.route('/')
+        def index():
+            return jsonify({'status': 'ok'})
 
     def load_modules(self):
         # this is gross. stop looking at it.
