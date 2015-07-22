@@ -20,6 +20,9 @@ class BoxcarNotifier(Notifier):
 
         requests.post("https://new.boxcar.io/api/notifications", params=params)
 
+    def quick_send(self, message):
+        self.send(message, title=message, source='modapi')
+
 if __name__ == '__main__':
     boxcar = BoxcarNotifier()
     boxcar.send('test', title='hi', source='modapi')
