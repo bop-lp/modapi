@@ -22,7 +22,7 @@ class GDriveUploader:
         temp_file = tempfile.NamedTemporaryFile()
         temp_file.write(json.dumps(obj))
 
-        filename = '%s.json' % datetime.date.today()
+        filename = '%s.json' % datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
         if file_prefix:
             filename = '%s-%s' % (file_prefix, filename)
 
