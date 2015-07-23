@@ -15,16 +15,6 @@ def get_modules():
             dirs.append(path.replace('/', '.'))
     return dirs
 
-def handle_error(e):
-    code = 500
-    if isinstance(e, HTTPException):
-        code = e.code
-
-    notifier = notify.boxcar.BoxcarNotifier()
-    notifier.quick_send('Error: %s' % e)
-
-    return jsonify(error=str(e)), code
-
 def inject(module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
         inject_config = mod_conf[config.MOD_CONFIG_INJECT_KEY]
@@ -35,6 +25,16 @@ def single_inject(key, value, module, inject_config):
     if key in inject_config:
         x = inject_config[key]
         setattr(module, x, value)
+
+def handle_error(e):
+    code = 500
+    if isinstance(e, HTTPException):
+        code = e.code
+
+    notifier = notify.boxcar.BoxcarNotifier()
+    notifier.quick_send('Error: %s' % e)
+
+    return jsonify(error=str(e)), code
 
 class ModApi:
     def __init__(self):
