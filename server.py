@@ -1,7 +1,7 @@
 from importlib import import_module
 import os
 
-from flask import Flask, abort, jsonify
+from flask import Flask, jsonify
 from werkzeug.exceptions import HTTPException, HTTP_STATUS_CODES
 
 import notify
