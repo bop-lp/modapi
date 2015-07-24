@@ -52,7 +52,6 @@ class ModApi:
             return jsonify({'status': 'ok'})
 
     def load_modules(self):
-        # this is gross. stop looking at it.
         for p in get_modules():
             c = import_module(p + '.config')
             mc = c.config
