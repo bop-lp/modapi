@@ -30,10 +30,8 @@ def handle_error(e):
     code = 500
     if isinstance(e, HTTPException):
         code = e.code
-
     notifier = notify.boxcar.BoxcarNotifier()
     notifier.quick_send('Error: %s' % e)
-
     return jsonify(error=str(e)), code
 
 class ModApi:
@@ -48,7 +46,6 @@ class ModApi:
         def index():
             notifier = notify.boxcar.BoxcarNotifier()
             notifier.quick_send('Modapi running.')
-
             return jsonify({'status': 'ok'})
 
     def load_modules(self):
