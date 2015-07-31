@@ -63,6 +63,9 @@ class ModApi:
             pre = mc[k] if k in mc else None
             self.app.register_blueprint(mod, url_prefix=pre)
 
+api = ModApi()
+app = api.app
+
 if __name__ == "__main__":
     api = ModApi()
     api.app.run(debug=False, host=config.SERVER_HOST, port=config.SERVER_PORT)
