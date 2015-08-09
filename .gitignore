@@ -1,3 +1,4 @@
+requirements.txt
 bin/
 modules/
 !modules/example_module/
