@@ -68,4 +68,4 @@ app = api.app
 
 if __name__ == "__main__":
     api = ModApi()
-    api.app.run(debug=False, host=config.SERVER_HOST, port=config.SERVER_PORT)
+    api.app.run(debug=True, host=config.SERVER_HOST, port=config.SERVER_PORT)
