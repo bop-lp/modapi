@@ -15,3 +15,7 @@ for f in os.listdir(config.MODULES_DIR):
 with open('requirements.txt', 'w') as file:
   for f in found:
     file.write('-r %s\n' % f)
+
+with open('requirements.sh', 'w') as file:
+  for f in found:
+    file.write('pip install -r %s\n' % f)
