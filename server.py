@@ -1,3 +1,4 @@
+import argparse
 from importlib import import_module
 import os
 
@@ -72,5 +73,9 @@ api = ModApi()
 app = api.app
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-d", "--debug", help="enable debug", action="store_true")
+    args = parser.parse_args()
+
     api = ModApi()
-    api.app.run(debug=True, host=config.SERVER_HOST, port=config.SERVER_PORT)
+    api.app.run(debug=args.debug, host=config.SERVER_HOST, port=config.SERVER_PORT)
