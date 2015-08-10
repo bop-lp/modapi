@@ -2,7 +2,7 @@ import argparse
 from importlib import import_module
 import os
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from werkzeug.exceptions import HTTPException, HTTP_STATUS_CODES
 
 import notify
