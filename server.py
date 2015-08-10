@@ -42,6 +42,11 @@ class ModApi:
         for code in HTTP_STATUS_CODES:
             self.app.register_error_handler(code, handle_error)
 
+        @self.app.route('/favicon.ico')
+        def favicon():
+            return send_from_directory(app.root_path, 'favicon.ico',
+                    mimetype='image/vnd.microsoft.icon')
+
         @self.app.route('/')
         def index():
             notifier = notify.boxcar.BoxcarNotifier()
