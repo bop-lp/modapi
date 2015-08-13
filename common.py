@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import abort, request
+from flask import abort, request, jsonify
 
 import secrets
 
@@ -18,3 +18,11 @@ def require_secret(f):
         else:
             abort(401)
     return decorated
+
+def dashboard_item(i):
+    return dashboard_items(i)
+
+def dashboard_items(d):
+    if isinstance(d, list):
+        return jsonify({'items': d})
+    return jsonify({'items': [d]})
