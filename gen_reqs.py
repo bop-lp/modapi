@@ -3,7 +3,7 @@ import config
 import os
 
 # Generates requirements.txt file from modules
-found = ['server_requirements.txt']
+found = ['modapi_requirements.txt']
 
 for f in os.listdir(config.MODULES_DIR):
     path = os.path.join(config.MODULES_DIR, f)
