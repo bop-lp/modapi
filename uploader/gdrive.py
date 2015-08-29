@@ -31,6 +31,4 @@ class GDriveUploader:
 
 if __name__ == '__main__':
     uploader = GDriveUploader()
-    # uploader.upload('/tmp/example/file.path')
-    # uploader.upload('/tmp/example/file.path', title='rename.txt', parent='asdjkfhadf')
     uploader.upload('~/drive')
