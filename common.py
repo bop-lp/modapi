@@ -19,6 +19,7 @@ def require_secret(f):
             abort(401)
     return decorated
 
+# TODO: move these elsewhere
 def dashboard_item(i):
     return dashboard_items(i)
 
