@@ -5,6 +5,7 @@ import os
 from flask import Flask, jsonify, send_from_directory
 from werkzeug.exceptions import HTTPException, HTTP_STATUS_CODES
 
+from common import require_secret
 import notify
 import config
 
