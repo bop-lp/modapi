@@ -48,11 +48,24 @@ class ModApi:
             return send_from_directory(app.root_path, 'favicon.ico',
                     mimetype='image/vnd.microsoft.icon')
 
+        @require_secret
         @self.app.route('/')
         def index():
             notifier = notify.boxcar.BoxcarNotifier()
             notifier.quick_send('Modapi running.')
             return jsonify({'status': 'ok'})
+
+        def shutdown_server():
+            func = request.environ.get('werkzeug.server.shutdown')
+            if func is None:
+                raise RuntimeError('Not running with the Werkzeug Server')
+            func()
+
+        @require_secret
+        @self.app.route('/shutdown')
+        def shutdown():
+            shutdown_server()
+            return 'Server shutting down...'
 
     def load_modules(self):
         for p in get_modules():
