@@ -2,7 +2,7 @@ import argparse
 from importlib import import_module
 import os
 
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, request, send_from_directory
 from werkzeug.exceptions import HTTPException, HTTP_STATUS_CODES
 
 from common import require_secret
@@ -43,6 +43,10 @@ class ModApi:
 
         for code in HTTP_STATUS_CODES:
             self.app.register_error_handler(code, handle_error)
+
+        @self.app.route('/robots.txt')
+        def static_from_root():
+            return send_from_directory(app.static_folder, request.path[1:])
 
         @self.app.route('/favicon.ico')
         def favicon():
