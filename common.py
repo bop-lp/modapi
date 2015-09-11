@@ -10,6 +10,7 @@ def secret_correct(val):
     return secrets.SECRET_KEY and secrets.SECRET_KEY_VALUE and \
         val == secrets.SECRET_KEY_VALUE
 
+# TODO: add this to every route automatically
 def require_secret(f):
     @wraps(f)
     def decorated(*args, **kwargs):
