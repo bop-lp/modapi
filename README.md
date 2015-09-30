@@ -1,5 +1,5 @@
 # modapi
-A modular API framework in Python.
+A modular API framework in Python. Create APIs out of subcomponents and avoid writing boilerplate.
 
 ## Usage
 1. Setup `config.py`. See `config.py.example`.
