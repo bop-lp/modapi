@@ -1,8 +1,8 @@
+# Generates requirements.txt file and requirements.sh from modules
 import config
 
 import os
 
-# Generates requirements.txt file from modules
 found = ['requirements_server.txt']
 
 for f in os.listdir(config.MODULES_DIR):
