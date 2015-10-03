@@ -19,15 +19,14 @@ class GDriveUploader:
         call(command, shell=True)
 
     def quick_upload(self, obj, file_prefix=None, folder=None):
-        temp_file = tempfile.NamedTemporaryFile()
-        temp_file.write(json.dumps(obj))
+        with tempfile.NamedTemporaryFile() as temp_file:
+            json.dump(obj, temp_file)
 
-        filename = '%s.json' % datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-        if file_prefix:
-            filename = '%s-%s' % (file_prefix, filename)
+            filename = '%s.json' % datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+            if file_prefix:
+                filename = '%s-%s' % (file_prefix, filename)
 
-        self.upload(temp_file.name, title=filename, parent=folder)
-        temp_file.close()
+            self.upload(temp_file.name, title=filename, parent=folder)
 
 if __name__ == '__main__':
     uploader = GDriveUploader()
