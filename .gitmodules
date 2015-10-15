@@ -1,0 +1,3 @@
+[submodule "uploader"]
+	path = uploader
+	url = git@github.com:csu/pyuploader.git
