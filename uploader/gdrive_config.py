@@ -1,1 +1,0 @@
-GDRIVE_BINARY_PATH = '~/drive'
