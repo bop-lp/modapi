@@ -1,21 +1,13 @@
 import argparse
 from importlib import import_module
-import os
 
 from flask import Flask, jsonify, request, send_from_directory
 from werkzeug.exceptions import HTTPException, HTTP_STATUS_CODES
 
 from common import require_secret
+from modularity import modularity
 import notify
 import config
-
-def get_modules():
-    dirs = []
-    for f in os.listdir(config.MODULES_DIR):
-        path = os.path.join(config.MODULES_DIR, f)
-        if os.path.isdir(path):
-            dirs.append(path.replace('/', '.'))
-    return dirs
 
 def inject(module, mod_conf):
     if config.MOD_CONFIG_INJECT_KEY in mod_conf:
@@ -73,7 +65,7 @@ class ModApi:
             return 'Server shutting down...'
 
     def load_modules(self):
-        for p in get_modules():
+        for p in modularity.get_modules():
             c = import_module(p + '.config')
             mc = c.config
             k = config.MOD_CONFIG_ROUTES_MOD_KEY
