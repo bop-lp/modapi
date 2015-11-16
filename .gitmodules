@@ -4,3 +4,6 @@
 [submodule "modularity"]
 	path = modularity
 	url = git@github.com:csu/modularity.git
+[submodule "notify"]
+	path = notify
+	url = git@github.com:csu/pynotify.git
