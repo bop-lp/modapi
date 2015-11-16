@@ -65,7 +65,7 @@ class ModApi:
             return 'Server shutting down...'
 
     def load_modules(self):
-        for p in modularity.get_modules():
+        for p in modularity.get_modules(config.MODULES_DIR):
             c = import_module(p + '.config')
             mc = c.config
             k = config.MOD_CONFIG_ROUTES_MOD_KEY
