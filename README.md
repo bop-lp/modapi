@@ -1,5 +1,5 @@
 # modapi
-A modular API framework in Python. Build APIs out of subcomponents and avoid writing boilerplate.
+A modular API framework in Python. Built on top of Flask. Use modapi to build APIs out of subcomponents and avoid writing boilerplate.
 
 ## Usage
 1. Setup `config.py`. See `config.py.example`.
